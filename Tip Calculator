@@ -1,0 +1,151 @@
+setTimeout(function() {
+  setScreen("screen2");
+}, 2000);
+hideElement("label3"); //Hide all the elements of screen 2 & 3 except label2. 
+hideElement("label4");
+hideElement("radio_button3");
+hideElement("radio_button4");
+hideElement("radio_button8");
+hideElement("radio_button9");
+hideElement("radio_button10");
+hideElement("radio_button11");
+hideElement("label5");
+hideElement("text_input1");
+hideElement("text_input2");
+hideElement("label12");
+hideElement("label6");
+hideElement("label7");
+hideElement("label8");
+hideElement("label11");
+hideElement("label9");
+hideElement("label1");
+hideElement("label10");
+hideElement("label13");
+hideElement("label15");
+hideElement("radio_button1");
+hideElement("radio_button2");
+hideElement("label16");
+hideElement("text_input3");
+hideElement("label17");
+setTimeout(function() {
+  showElement("radio_button3");
+  showElement("radio_button4");
+  showElement("label3");
+  showElement("label4");
+}, 5000);
+onEvent("radio_button3", "change", function( ) {
+	console.log("radio_button3 checked? " + getChecked("radio_button3"));
+	showElement("label5");
+	setTimeout(function(){
+	   showElement("text_input1");
+	},2000);
+});
+onEvent("radio_button4", "change", function( ) {
+	console.log("radio_button4 checked? " + getChecked("radio_button4"));
+	 showElement("label5");
+	 showElement("label10");
+	   showElement("radio_button1");
+	   showElement("radio_button2");
+	   showElement("label13");
+	   showElement("label15");
+	   setTimeout(function() {
+	   showElement("text_input1"); 
+	 	 }, 2000);
+});
+onEvent("text_input1", "change", function( ) {
+  setTimeout(function() {
+    showElement("label12");
+  }, 2000);
+  setTimeout(function() {
+   showElement("text_input2");
+   showElement("label1");
+  }, 4000);
+});
+onEvent("text_input2", "change", function( ) {
+  setTimeout(function() {
+    showElement("label6");
+  }, 2000);
+  setTimeout(function() {
+   showElement("label7");
+   showElement("label8");
+   showElement("label11");
+   showElement("label9");
+   showElement("radio_button8");
+   showElement("radio_button10");
+   showElement("radio_button11");
+   showElement("radio_button9");
+  }, 4000);
+});
+function tipCalc(billValue, tipPercentage){ //Declaring a function to calculate the tip passing billValue and tipPercentage as parameters.
+  return Math.round(billValue * tipPercentage); //The function returns the tip amount rounding off to the nearest integer if the value is a decimal.
+}
+onEvent("radio_button8", "change", function( ) {
+  setScreen("screen3");
+	var tipValue  = tipCalc(getNumber("text_input2"),0.25);
+	var totalBill = tipValue + getNumber("text_input2");
+	setText("label23", "Total Bill for your meal at " + getText("text_input1") + " with " + " ₹ " + tipValue + " tip is:");
+	setText("label25", totalBill);
+});
+onEvent("radio_button10", "change", function( ) {
+  setScreen("screen3");
+	var tipValue  = tipCalc(getNumber("text_input2"),0.50);
+	var totalBill = tipValue + getNumber("text_input2");
+	setText("label23", "Total Bill for your meal at " + getText("text_input1") + " with " + " ₹ " + tipValue + " tip is:");
+	setText("label25", totalBill);
+});
+onEvent("radio_button11", "change", function( ) {
+  setScreen("screen3");
+	var tipValue  = tipCalc(getNumber("text_input2"),0.75);
+	var totalBill = tipValue + getNumber("text_input2");
+	setText("label23", "Total Bill for your meal at " + getText("text_input1") + " with " + " ₹ " + tipValue + " tip is:");
+	setText("label25", totalBill);
+});
+onEvent("radio_button9", "change", function( ) {
+  setScreen("screen3");
+	var tipValue  = tipCalc(getNumber("text_input2"),0.100);
+	var totalBill = tipValue + getNumber("text_input2");
+	setText("label23", "Total Bill for your meal at " + getText("text_input1") + " with " + " ₹ " + tipValue + " tip is:");
+	setText("label25", totalBill);
+});
+onEvent("radio_button1", "change", function( ) {
+  setTimeout (function() {
+    showElement("label16");
+  }, 2000);
+  setTimeout (function()  {
+    showElement("text_input3");
+  }, 4000);
+  console.log("radio_button1 checked? " + getChecked("radio_button1"));
+});
+onEvent("radio_button2", "change", function( ) {
+  showElement("label116");
+  setText("label16","thank you for using the app, have a nice day");
+  console.log("radio_button2 checked? " + getChecked("radio_button2"));
+});
+onEvent("text_input3", "change", function( ) {
+  if(getChecked("radio_button8")  == true) {
+    var tipValue = tipCalc(getNumber("text_input2"),0.25);
+    var totalBill = tipValue + getNumber("text_input2");
+    var splitBill = Math.round(totalBill/ getNumber("text_input3"));
+    setText("label17", "Each has to pay $" + splitBill + ".");
+  } else if (getChecked("radio_button10")  == true) {
+    var tipValue = tipCalc(getNumber("text_input2"),0.50);
+    var totalBill = tipValue + getNumber("text_input2");
+    var splitBill = Math.round(totalBill/ getNumber("text_input3"));
+    setText("label17", "Each has to pay $" + splitBill + ".");
+  } else if (getChecked("radio_button11")  == true) {
+    var tipValue = tipCalc(getNumber("text_input2"),0.75);
+    var totalBill = tipValue + getNumber("text_input2");
+    var splitBill = Math.round(totalBill/ getNumber("text_input3"));
+    setText("label17", "Each has to pay $" + splitBill + ".");
+  } else {
+    var tipValue = tipCalc(getNumber("text_input2"),0.100);
+    var totalBill = tipValue + getNumber("text_input2");
+    var splitBill = Math.round(totalBill/ getNumber("text_input3"));
+    setText("label17", "Each has to pay $" + splitBill + ".");
+  }
+	setTimeout(function(){
+   showElement("label17");
+	}, 2000); 
+	console.log("text_input3 entered text: " + getText("text_input3"));
+});
+getText("id");
